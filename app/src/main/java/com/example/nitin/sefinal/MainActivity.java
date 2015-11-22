@@ -14,10 +14,10 @@ class MyDbHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
 
     public static final String TABLE_NAME = "student";
-    public static final String COL_NAME = "pName";
-    public static final String COL_DATE = "pDate";
+    public static final String COL_NAME = "sName";
+    public static final String COL_PASSWORD = "sPassword";
     private static final String STRING_CREATE = "CREATE TABLE "+TABLE_NAME+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COL_NAME+" TEXT, "+COL_DATE+" DATE);";
+            +COL_NAME+" INTEGER, "+COL_PASSWORD+" TEXT);";
 
     public MyDbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -27,9 +27,8 @@ class MyDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(STRING_CREATE);
         ContentValues cv = new ContentValues(2);
-        cv.put(COL_NAME, "New Entry");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        cv.put(COL_DATE, dateFormat.format(new Date()));
+        cv.put(COL_NAME, "1001241807");
+        cv.put(COL_PASSWORD,"password");
         db.insert(TABLE_NAME, null, cv);
     }
 

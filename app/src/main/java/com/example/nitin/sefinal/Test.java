@@ -15,11 +15,9 @@ import android.widget.SimpleCursorAdapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Test extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class Test extends Activity{
 
-    EditText mText;
-    Button mAdd;
-    ListView mList;
+
 
     MyDbHelper mHelper;
     SQLiteDatabase mDb;
@@ -31,11 +29,6 @@ public class Test extends Activity implements View.OnClickListener, AdapterView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mText = (EditText)findViewById(R.id.name);
-        mAdd = (Button)findViewById(R.id.add);
-        mAdd.setOnClickListener(this);
-        mList = (ListView)findViewById(R.id.list);
-        mList.setOnItemClickListener(this);
 
         mHelper = new MyDbHelper(this);
     }
@@ -44,12 +37,7 @@ public class Test extends Activity implements View.OnClickListener, AdapterView.
     public void onResume() {
         super.onResume();
         mDb = mHelper.getWritableDatabase();
-        String[] columns = new String[] {"_id", MyDbHelper.COL_NAME, MyDbHelper.COL_DATE};
-        mCursor = mDb.query(MyDbHelper.TABLE_NAME, columns, null, null, null, null, null, null);
-        String[] headers = new String[] {MyDbHelper.COL_NAME, MyDbHelper.COL_DATE};
-        mAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,
-                mCursor, headers, new int[]{android.R.id.text1, android.R.id.text2});
-        mList.setAdapter(mAdapter);
+
     }
 
     @Override
@@ -58,24 +46,7 @@ public class Test extends Activity implements View.OnClickListener, AdapterView.
         mDb.close();
         mCursor.close();
     }
-    @Override
-    public void onClick(View v) {
-        ContentValues cv = new ContentValues(2);
-        cv.put(MyDbHelper.COL_NAME, mText.getText().toString());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        cv.put(MyDbHelper.COL_DATE, dateFormat.format(new Date())); //Insert 'now' as the date
-        mDb.insert(MyDbHelper.TABLE_NAME, null, cv);
-        mCursor.requery();
-        mAdapter.notifyDataSetChanged();
-        mText.setText(null);
-    }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        mCursor.moveToPosition(position);
-        String rowId = mCursor.getString(0); //Column 0 of the cursor is the id
-        mDb.delete(MyDbHelper.TABLE_NAME, "_id = ?", new String[]{rowId});
-        mCursor.requery();
-        mAdapter.notifyDataSetChanged();
-    }
+
+
 }
