@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Student ID"
-        android:id="@+id/textView2"
+        android:id="@+id/textView_studentID"
         android:textSize="20dp"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/textView" />
@@ -38,18 +38,18 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText_name"
+        android:id="@+id/editText_studentID"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_toEndOf="@+id/textView_studentID" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Password"
         android:id="@+id/textView_password"
-        android:layout_alignEnd="@+id/editText_name"
-        android:layout_below="@+id/editText_name"
-        android:layout_alignStart="@+id/textView2"
+        android:layout_alignEnd="@+id/editText_studentID"
+        android:layout_below="@+id/editText_studentID"
+        android:layout_alignStart="@+id/textView_studentID"
         android:textSize="20dp" />
 
     <EditText
@@ -58,8 +58,8 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText_password"
-        android:layout_below="@+id/editText_name"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_below="@+id/textView_studentID"
+        android:layout_alignStart="@+id/editText_studentID" />
 
     <Button
         android:layout_width="wrap_content"
