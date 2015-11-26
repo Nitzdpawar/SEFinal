@@ -1,65 +1,101 @@
 package com.example.nitin.sefinal;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+        import android.app.Activity;
+        import android.content.Intent;
+        import android.graphics.Color;
+        import android.os.Bundle;
 
-class MyDbHelper extends SQLiteOpenHelper {
+        import android.view.Menu;
+        import android.view.MenuItem;
+        import android.view.View;
 
-    private static final String DB_NAME = "mydb";
-    private static final int DB_VERSION = 1;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-    public static final String TABLE_NAME = "student";
-    public static final String COL_NAME = "sId";
-    public static final String COL_PASSWORD = "sPassword";
-    private static final String STRING_CREATE = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COL_NAME+" TEXT, "+COL_PASSWORD+" TEXT);";
+public class MainActivity extends Activity  {
+    Button b1,b2;
+    EditText ed1,ed2;
 
-    public MyDbHelper(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+    TextView tx1;
+    int counter = 3;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        b1 = (Button) findViewById(R.id.button);
+        ed1 = (EditText) findViewById(R.id.editText_id);
+        ed2 = (EditText) findViewById(R.id.editText_password);
+
+
+
+
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ed1.getText().toString().equals("admin") &&
+
+                        ed2.getText().toString().equals("admin")) {
+                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(MainActivity.this,HomeScreen.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
+
+                    tx1.setVisibility(View.VISIBLE);
+                    tx1.setBackgroundColor(Color.RED);
+                    counter--;
+                    tx1.setText(Integer.toString(counter));
+
+                    if (counter == 0) {
+                        b1.setEnabled(false);
+                    }
+                }
+            }
+        });
+
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(STRING_CREATE);
-        ContentValues cv = new ContentValues(2);
-        addStudent("1001241807", "password",db);
-        addStudent("admin","admin123",db);
-    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        int id = item.getItemId();
 
-        onCreate(db);
-    }
-
-    public void addStudent(String stuid,String pass,SQLiteDatabase db)
-
-    {
-
-        ContentValues values=new ContentValues(2);
-
-        values.put("studentId", stuid);
-
-        values.put("password", pass);
-
-        db.insert("student", "studentId", values);
-
-    }
-
-
-    public Cursor getStudent(String studentID)
-
-    {
-
-        Cursor cursor = getReadableDatabase().rawQuery("select * from student where _id=1", null);
-
-        return cursor;
-
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
