@@ -48,30 +48,31 @@ public class Test extends Activity{
 
                 String stpass=spass.getText().toString();
 
-                Cursor row1 = mHelper.getStudent();
-                row1.moveToFirst();
+                Cursor row = mHelper.getStudent(stid);
+                row.moveToFirst();
+                String sid;
+                String spass;
+                while (!row.isAfterLast()) {
+
+                    sid = row.getString(1);
+
+                    spass = row.getString(2);
 
 
+                    if(stid.equalsIgnoreCase(sid) && stpass.equalsIgnoreCase(spass)){
 
-                String sid = row1.getString(1);
+                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context,HomeScreen.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "StudentId or Password is Incorrect", Toast.LENGTH_SHORT).show();
+                    }
 
-                String spass = row1.getString(2);
 
-                System.out.println("..................... =>"+sid);
-                System.out.println(spass);
-
-                System.out.println("......textvalue............... =>"+stid);
-                System.out.println("..................... =>"+stpass);
-
-                if(stid.equalsIgnoreCase(sid) && stpass.equalsIgnoreCase(spass)){
-
-                    Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context,HomeScreen.class);
-                    startActivity(intent);
                 }
-                else{
-                    Toast.makeText(getApplicationContext(), "StudentId or Password is Incorrect", Toast.LENGTH_SHORT).show();
-                }
+
+
             }
         });
     }

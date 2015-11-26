@@ -17,7 +17,7 @@ class MyDbHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "student";
     public static final String COL_NAME = "sId";
     public static final String COL_PASSWORD = "sPassword";
-    private static final String STRING_CREATE = "CREATE TABLE "+TABLE_NAME+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+    private static final String STRING_CREATE = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COL_NAME+" TEXT, "+COL_PASSWORD+" TEXT);";
 
     public MyDbHelper(Context context) {
@@ -28,17 +28,17 @@ class MyDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(STRING_CREATE);
         ContentValues cv = new ContentValues(2);
-        addStudent("1001241807", "password");
-
+        addStudent("1001241807", "password",db);
+        addStudent("admin","admin123",db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+
         onCreate(db);
     }
 
-    public void addStudent(String stuid,String pass)
+    public void addStudent(String stuid,String pass,SQLiteDatabase db)
 
     {
 
@@ -48,12 +48,12 @@ class MyDbHelper extends SQLiteOpenHelper {
 
         values.put("password", pass);
 
-        getWritableDatabase().insert("student", "studentId", values);
+        db.insert("student", "studentId", values);
 
     }
 
 
-    public Cursor getStudent()
+    public Cursor getStudent(String studentID)
 
     {
 
