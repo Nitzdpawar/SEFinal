@@ -2,6 +2,8 @@ package com.example.nitin.sefinal;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -22,7 +24,7 @@ public class Test extends Activity{
     Button btn;
     EditText sid;
     EditText spass;
-
+    final Context context = this;
     MyDbHelper mHelper;
     SQLiteDatabase mDb;
     Cursor mCursor;
@@ -63,7 +65,9 @@ public class Test extends Activity{
 
                 if(stid.equalsIgnoreCase(sid) && stpass.equalsIgnoreCase(spass)){
 
-                    Toast.makeText(getApplicationContext(), "Login Successfull", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context,HomeScreen.class);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "StudentId or Password is Incorrect", Toast.LENGTH_SHORT).show();
