@@ -44,7 +44,14 @@ public class MainActivity extends Activity  {
                     Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(MainActivity.this,HomeScreen.class);
                     startActivity(intent);
-                } else {
+                }
+                else if(ed1.getText().toString().equals("1001241807") && ed2.getText().toString().equals("password")){
+                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(MainActivity.this,HomeScreen.class);
+                    startActivity(intent);
+                }
+
+                else {
                     Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
 
                     tx1.setVisibility(View.VISIBLE);
