@@ -2,6 +2,7 @@ package com.example.nitin.sefinal;
 
 
         import android.app.Activity;
+        import android.app.Fragment;
         import android.content.Intent;
         import android.graphics.Color;
         import android.os.Bundle;
@@ -32,9 +33,6 @@ public class MainActivity extends Activity  {
         ed2 = (EditText) findViewById(R.id.editText_password);
 
 
-
-
-
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,12 +40,12 @@ public class MainActivity extends Activity  {
 
                         ed2.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(MainActivity.this,HomeScreen.class);
+                    Intent intent=new Intent(MainActivity.this,Navigation_slide.class);
                     startActivity(intent);
                 }
                 else if(ed1.getText().toString().equals("1001241807") && ed2.getText().toString().equals("password")){
                     Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(MainActivity.this,HomeScreen.class);
+                    Intent intent=new Intent(MainActivity.this,Navigation_slide.class);
                     startActivity(intent);
                 }
 
