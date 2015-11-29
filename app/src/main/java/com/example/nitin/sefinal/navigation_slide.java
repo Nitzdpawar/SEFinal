@@ -3,6 +3,7 @@ package com.example.nitin.sefinal;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -17,6 +18,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static com.example.nitin.sefinal.R.*;
 
 public class navigation_slide extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -36,11 +39,11 @@ public class navigation_slide extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_slide);
+        setContentView(layout.activity_navigation_slide);
 
 
 
-        mainListView = (ListView) findViewById( R.id.mainListView );
+        mainListView = (ListView) findViewById( id.mainListView );
         String[] adList = new String[] { "Magnetic SmartPhone CD Mount for:$20","Calculus text book (ISBN- 9780534465544 for 30$","New Precal book cheap, and microwave for 40$", "2010 Toyota Corolla-LE Black. Excellent Condition for:$1500",
                 "Introduction to algorithm by cormen third addition.- THIRD EDITION(LATEST EDITION) for:25$", "New Apartment Community located off Abrams St. for Fall 2016 for:455$"};
 
@@ -52,7 +55,7 @@ public class navigation_slide extends AppCompatActivity
 
 
 
-        listAdapter = new ArrayAdapter<String>(this, R.layout.rowlayout, adList);
+        listAdapter = new ArrayAdapter<String>(this, layout.rowlayout, adds);
 
         mainListView.setAdapter(listAdapter);
 
@@ -61,13 +64,13 @@ public class navigation_slide extends AppCompatActivity
 
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+                getSupportFragmentManager().findFragmentById(id.navigation_drawer);
         mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+                id.navigation_drawer,
+                (DrawerLayout) findViewById(id.drawer_layout));
     }
 
     @Override
@@ -79,9 +82,11 @@ public class navigation_slide extends AppCompatActivity
         switch(position){
             case 0:
                 objframent=new menu1_fragment();
+
                 break;
             case 1:
-                objframent=new menu2_fragment();
+               // objframent=new menu2_fragment();
+                startActivity(new Intent(this,menu2_fragment.class));
                 break;
             case 2:
                 objframent=new menu3_fragment();
@@ -99,23 +104,23 @@ public class navigation_slide extends AppCompatActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager=getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, objframent)
+                .replace(id.container, objframent)
                 .commit();
     }
 
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(string.title_section1);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(string.title_section2);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                mTitle = getString(string.title_section3);
                 break;
             case 4:
-                mTitle = getString(R.string.title_section4);
+                mTitle = getString(string.title_section4);
                 break;
         }
     }
@@ -184,7 +189,7 @@ public class navigation_slide extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_navigation_slide, container, false);
+            View rootView = inflater.inflate(layout.fragment_navigation_slide, container, false);
             return rootView;
         }
 
