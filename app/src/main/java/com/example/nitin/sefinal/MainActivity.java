@@ -2,19 +2,16 @@ package com.example.nitin.sefinal;
 
 
         import android.app.Activity;
-        import android.app.Fragment;
-        import android.content.Intent;
-        import android.graphics.Color;
-        import android.os.Bundle;
-
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
-
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity  {
     Button b1,b2;
@@ -40,12 +37,12 @@ public class MainActivity extends Activity  {
 
                         ed2.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(MainActivity.this,Navigation_slide.class);
+                    Intent intent=new Intent(MainActivity.this,navigation_slide.class);
                     startActivity(intent);
                 }
                 else if(ed1.getText().toString().equals("1001241807") && ed2.getText().toString().equals("password")){
                     Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(MainActivity.this,Navigation_slide.class);
+                    Intent intent=new Intent(MainActivity.this,navigation_slide.class);
                     startActivity(intent);
                 }
 

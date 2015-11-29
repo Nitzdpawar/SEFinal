@@ -21,9 +21,10 @@
             android:label="@string/title_activity_home_screen" >
         </activity>
         <activity
-            android:name=".Navigation_slide"
+            android:name=".navigation_slide"
             android:label="@string/title_activity_navigation_slide" >
         </activity>
+
     </application>
 
 </manifest>
