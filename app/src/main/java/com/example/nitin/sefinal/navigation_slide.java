@@ -3,7 +3,6 @@ package com.example.nitin.sefinal;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -80,7 +79,6 @@ public class navigation_slide extends AppCompatActivity
         switch(position){
             case 0:
                 objframent=new menu1_fragment();
-
                 break;
             case 1:
                 objframent=new menu2_fragment();
@@ -89,10 +87,8 @@ public class navigation_slide extends AppCompatActivity
                 objframent=new menu3_fragment();
                 break;
             case 3:
-                Intent intent = new Intent(this,MainActivity.class);
-                startActivity(intent);
-                return;
-                
+                objframent=new menu4_fragment();
+                break;
 
         }
 
@@ -102,10 +98,8 @@ public class navigation_slide extends AppCompatActivity
 
         // update the main content by replacing fragments
         FragmentManager fragmentManager=getFragmentManager();
-
         fragmentManager.beginTransaction()
-                .add(R.id.container, objframent)
-                .addToBackStack("fragBack")
+                .replace(R.id.container, objframent)
                 .commit();
     }
 
@@ -133,14 +127,6 @@ public class navigation_slide extends AppCompatActivity
         actionBar.setTitle(mTitle);
     }
 
-    @Override
-    public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() == 0) {
-            this.finish();
-        } else {
-            getFragmentManager().popBackStack();
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
