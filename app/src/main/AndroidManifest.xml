@@ -22,9 +22,13 @@
         </activity>
         <activity
             android:name=".navigation_slide"
-            android:label="@string/title_activity_navigation_slide" >
+            android:label="@string/title_activity_navigation_slide"
+            android:windowSoftInputMode="adjustPan">
         </activity>
-
+        <activity
+            android:name=".tempcheck"
+            android:label="@string/title_activity_tempcheck" >
+        </activity>
     </application>
 
 </manifest>

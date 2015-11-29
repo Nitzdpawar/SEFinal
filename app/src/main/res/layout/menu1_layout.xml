@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="menu1"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="173dp" />
+
+<FrameLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:elevation="4dp"
+    android:translationZ="4dp"
+    android:background="@android:color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+
+        android:fitsSystemWindows="true"
+        android:fillViewport="true">
+
+
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+
+
+tools:showIn="@layout/activity_add__category" tools:context=".Add_Category">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:text="Category"
+    android:id="@+id/Category"
+    android:layout_centerVertical="true"
+    android:layout_alignStart="@+id/textView5" />
+<EditText
+    android:id="@+id/email_address"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:hint="Add Title"
+    android:inputType="textEmailAddress"
+    android:layout_alignLeft="@+id/spinner"
+    android:layout_alignStart="@+id/spinner"
+    android:layout_alignBottom="@+id/textView2"
+    android:layout_alignParentTop="true" />
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Submit"
+    android:id="@+id/button"
+    android:layout_alignTop="@+id/button3"
+    android:layout_alignStart="@+id/textView"
+    android:clickable="true"
+    android:singleLine="false" />
+
+<Spinner
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Enter Sub-Category"
+    android:id="@+id/spinner"
+    android:spinnerMode="dropdown"
+    android:layout_centerVertical="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignStart="@+id/editText2" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:text="Sub-Category"
+    android:id="@+id/textView"
+    android:layout_below="@+id/spinner"
+    android:layout_toStartOf="@+id/spinner2" />
+
+<Spinner
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Enter Sub-Category"
+    android:id="@+id/spinner2"
+    android:spinnerMode="dropdown"
+    android:layout_below="@+id/spinner"
+    android:layout_alignStart="@+id/spinner" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:text="Add Title:"
+    android:id="@+id/textView2"
+    android:layout_marginTop="28dp"
+    android:layout_alignParentTop="true"
+    android:layout_alignLeft="@+id/textView"
+    android:layout_alignStart="@+id/textView" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:text="Image:"
+    android:id="@+id/textView3"
+    android:layout_alignBottom="@+id/button2"
+    android:layout_alignStart="@+id/textView5" />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Browse"
+    android:id="@+id/button2"
+    android:layout_below="@+id/email_address"
+    android:layout_centerHorizontal="true" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:text="Description:"
+    android:id="@+id/textView4"
+    android:layout_above="@+id/editText2"
+    android:layout_alignEnd="@+id/button" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:text="Contact:"
+    android:id="@+id/textView5"
+    android:layout_above="@+id/spinner"
+    android:layout_alignStart="@+id/textView" />
+
+<EditText
+    android:id="@+id/editText"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:hint="Add Description"
+    android:inputType="textEmailAddress"
+    android:layout_alignLeft="@+id/button2"
+    android:layout_alignStart="@+id/button2"
+    android:layout_above="@+id/editText2"
+    android:layout_below="@+id/button2" />
+
+<EditText
+    android:id="@+id/editText2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:hint="Add Contact #"
+    android:inputType="textEmailAddress"
+    android:layout_above="@+id/spinner"
+    android:layout_alignStart="@+id/editText" />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Cancel"
+    android:id="@+id/button3"
+    android:layout_below="@+id/spinner2"
+    android:layout_toEndOf="@+id/button2"
+    android:layout_marginTop="46dp" />
+
+
 </RelativeLayout>
+
+    </ScrollView>
+</FrameLayout>
